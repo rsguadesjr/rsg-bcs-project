@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCSProject", "BCSProject\BCSProject.csproj", "{7585B184-53BA-4F5C-85C4-304BC50A2FD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCSProject.Web", "BCSProject\BCSProject.Web.csproj", "{7585B184-53BA-4F5C-85C4-304BC50A2FD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{4BDE8681-16BC-4445-A564-8E48EA2794C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{E53E2862-50B7-406E-9227-03FBABE303E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{CA507141-9ED6-406D-A372-6D04F99122D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCSProject.Manager", "BCSProject.Manager\BCSProject.Manager.csproj", "{98F3B1DE-E05A-4996-B886-82776CEFA6EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCSProject.Data", "BCSProject.Data\BCSProject.Data.csproj", "{2FD31D6C-790F-44F9-A441-8F999E9370A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +25,21 @@ Global
 		{7585B184-53BA-4F5C-85C4-304BC50A2FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7585B184-53BA-4F5C-85C4-304BC50A2FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7585B184-53BA-4F5C-85C4-304BC50A2FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98F3B1DE-E05A-4996-B886-82776CEFA6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98F3B1DE-E05A-4996-B886-82776CEFA6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98F3B1DE-E05A-4996-B886-82776CEFA6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98F3B1DE-E05A-4996-B886-82776CEFA6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FD31D6C-790F-44F9-A441-8F999E9370A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FD31D6C-790F-44F9-A441-8F999E9370A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FD31D6C-790F-44F9-A441-8F999E9370A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FD31D6C-790F-44F9-A441-8F999E9370A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7585B184-53BA-4F5C-85C4-304BC50A2FD3} = {4BDE8681-16BC-4445-A564-8E48EA2794C3}
+		{98F3B1DE-E05A-4996-B886-82776CEFA6EA} = {E53E2862-50B7-406E-9227-03FBABE303E1}
+		{2FD31D6C-790F-44F9-A441-8F999E9370A9} = {CA507141-9ED6-406D-A372-6D04F99122D9}
 	EndGlobalSection
 EndGlobal
