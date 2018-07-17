@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -234,6 +235,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +251,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BCSProject.Common\BCSProject.Common.csproj">
+      <Project>{e70f5137-1a7d-4e71-b077-54e7b374ea6d}</Project>
+      <Name>BCSProject.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BCSProject.Data\BCSProject.Data.csproj">
+      <Project>{2fd31d6c-790f-44f9-a441-8f999e9370a9}</Project>
+      <Name>BCSProject.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BCSProject.Manager\BCSProject.Manager.csproj">
+      <Project>{98f3b1de-e05a-4996-b886-82776cefa6ea}</Project>
+      <Name>BCSProject.Manager</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

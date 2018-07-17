@@ -29,5 +29,7 @@ namespace BCSProject.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BCSProject.Data.Entities.Employee> Employees { get; set; }
     }
 }
