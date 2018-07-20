@@ -1,0 +1,11 @@
+﻿body .form-group input, body .form-group select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%; }
+
+body .form-group .bootstrap-tagsinput {
+  width: 100%; }
+
+body .form-group .bootstrap-tagsinput .tag {
+  font-size: 14px; }
+

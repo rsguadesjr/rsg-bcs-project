@@ -1,7 +1,6 @@
-﻿
+﻿@using System.Configuration
 <h3>List of Employees</h3>
-
-
+@Html.Hidden("WebApiLink", ConfigurationManager.AppSettings["WebApiLink"].ToString(), new { @id = "WebApiLink" })
 <table id="employeeTable" class="table">
     <thead>
         <tr>
@@ -25,7 +24,7 @@
         $(document).ready(function () {
             var table = $("#employeeTable").DataTable({
                 ajax: {
-                    url: "http://localhost:49911/api/employees",
+                    url: $("#WebApiLink").val() + "api/employees",
                     dataSrc: ""
                 },
                 columns: [

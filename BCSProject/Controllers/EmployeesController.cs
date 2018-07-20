@@ -13,5 +13,11 @@ namespace BCSProject.Controllers
         {
             return View();
         }
+
+        // GET: 
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
     }
 }
