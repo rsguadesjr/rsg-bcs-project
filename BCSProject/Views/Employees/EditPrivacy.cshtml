@@ -1,0 +1,36 @@
+﻿@using System.Configuration
+@Html.Hidden("WebApiLink", ConfigurationManager.AppSettings["WebApiLink"].ToString(), new { @id = "WebApiLink" })
+
+
+<h3>Employee Details</h3>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <form role="form" id="employee-form">
+            <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                <label for="employeeNo">Employee No.</label>
+                <input type="text" class="form-control" id="employeeNo" placeholder="Employee No" disabled>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" disabled>
+            </div>
+            <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" disabled>
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+            <div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                @*<button type="submit" class="btn btn-primary">Submit</button>*@
+                <button type="button" id="btn-submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+        <br /><br />
+    </div>
+</div>
+
+@Scripts.Render("~/scripts/employee/edit")

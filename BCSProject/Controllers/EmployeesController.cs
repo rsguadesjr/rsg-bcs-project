@@ -19,5 +19,11 @@ namespace BCSProject.Controllers
         {
             return View();
         }
+
+        // Edit Privacy
+        public ActionResult EditPrivacy(int id)
+        {
+            return View();
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
-
+    $('#birthday').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
     //initialization
     loadCountries();
     loadEmployeeDetails();

@@ -24,7 +24,7 @@
         $(document).ready(function () {
             var table = $("#employeeTable").DataTable({
                 ajax: {
-                    url: $("#WebApiLink").val() + "api/employees",
+                    url: "http://localhost:49911/api/employees",
                     dataSrc: ""
                 },
                 columns: [
@@ -43,7 +43,7 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn-link js-delete' data-employee-id=" + data + ">Delete</button>";
+                            return "<button class='btn btn-link js-delete' data-employee-id=" + data + ">Delete</button>";
                         }
                     }
                 ]

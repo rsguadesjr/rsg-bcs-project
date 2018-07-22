@@ -14,7 +14,7 @@ namespace BCSProject
                       "~/Content/Scripts/bootstrap.js",
                       "~/Content/Scripts/respond.js",
                       "~/Content/Scripts/datatables/jquery.datatables.js",
-                      "~/Content/Scripts/datatables/datatables.bootstrap.js"));
+                      "~/Content/Scripts/datatables/datatables.bootstrap4.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/tagsinput").Include(
                         "~/Content/Scripts/bootstrap-tagsinput.js"
@@ -36,7 +36,7 @@ namespace BCSProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/Css/bootstrap.css",
-                      "~/Content/Css/datatables/css/datatables.bootstrap.css",
+                      "~/Content/datatables/css/datatables.bootstrap4.css",
                       "~/Content/Css/site.css",
                       "~/Content/Css/layout.css",
                       "~/Content/Css/bootstrap-tagsinput-typehead.css",
