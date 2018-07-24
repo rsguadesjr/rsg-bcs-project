@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BCSProject.Data;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BCSProject.Models
@@ -60,6 +61,9 @@ namespace BCSProject.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+
+        public Token Token { get; set; }
     }
 
     public class RegisterViewModel
@@ -68,6 +72,13 @@ namespace BCSProject.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "User Role")]
+        public string RoleId { get; set; }
+
+        [Display(Name = "Link to an exising employee")]
+        public int? EmployeeId { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

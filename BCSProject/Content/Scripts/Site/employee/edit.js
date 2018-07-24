@@ -1,7 +1,6 @@
-﻿$(document).ready(function () {
-    $('#birthday').datepicker({
-        uiLibrary: 'bootstrap4'
-    });
+﻿var employee = {};
+$(document).ready(function () {
+
     //initialization
     loadCountries();
     loadEmployeeDetails();
@@ -17,9 +16,27 @@
 
 function loadEmployeeDetails() {
     $.ajax({
-        url: $("#WebApiLink").val() + "api/employees" + 2,
+        url: $("#WebApiLink").val() + "api/employees/" + $("#EmployeeId").val() ,
         success: function (data) {
-            console.log(data);
+            employee = data;
+            console.log(employee);
+            $("#address").val(data.address);
+            $("#age").val(data.age);
+            $("#birthday").val(new Date(data.birthday));
+            $("#civilStatus").val(data.civilStatus);
+            $("#country").val();
+            $("#dateHired").val(new Date(data.dateHired));
+            $("#dateResigned").val(new Date(data.dateResigned));
+            $("#employeeNo").val(data.employeeNo);
+            $("#firstName").val(data.firstname);
+            $("#lastName").val(data.lastname);
+            $("#gender").val(data.gender);
+            $("#phone").val(data.phoneNo);
+            $("#state").val(data.state);
+            $("#hobby").tagsinput("add", data.hobbies.map(e => e.hobbyName).join());
+            $("#interest").tagsinput("add", data.interests.map(e => e.interestName).join());
+
+            console.log(data.hobbies.map(e => e.hobbyName).join());
         }
     });
 }
@@ -34,6 +51,10 @@ function loadCountries() {
                 option += "<option value=" + item.alpha2Code + ">" + item.name + "</option>";
             });
             $("#country").append(option);
+
+            if (employee) {
+                $("#country").val(employee.country);
+            }
         }
     });
 }
@@ -48,7 +69,6 @@ function loadStates(country) {
             console.log("Load US");
             break;
     }
-
 }
 
 function submitForm() {

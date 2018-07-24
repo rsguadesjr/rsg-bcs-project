@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace BCSProject.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         // GET: Employees
@@ -17,6 +18,7 @@ namespace BCSProject.Controllers
         // GET: 
         public ActionResult Edit(int id)
         {
+            ViewBag.EmployeeId = id;
             return View();
         }
 
@@ -25,5 +27,7 @@ namespace BCSProject.Controllers
         {
             return View();
         }
+
+        
     }
 }

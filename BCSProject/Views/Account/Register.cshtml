@@ -1,41 +1,52 @@
-﻿@model BCSProject.Models.RegisterViewModel
+﻿@using BCSProject.Helpers
+@model BCSProject.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
-
+<script src="~/Content/Scripts/Site/site.js"></script>
+@Html.Hidden("WebApiLink", WebHelper.WebApiLink, new { @id = "WebApiLink" })
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
+    @Html.Partial("_Alert")
+
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
+    <div class="form-group row">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RoleId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.DropDownListFor(m => m.RoleId, WebHelper.GetUserRoles(), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group row">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        <div class="col-md-4">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+    <div class="form-group row">
+        <div class="offset-md-2 col-md-2">
+            <input type="submit" class="btn btn-success" value="Register" id="btn-register" />
         </div>
     </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Content/Scripts/Site/account/register.js"></script>
 }

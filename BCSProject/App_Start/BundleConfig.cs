@@ -10,11 +10,14 @@ namespace BCSProject
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Content/Scripts/jquery-{version}.js",
-                        "~/Content/Scripts/bootstrap.js",
-                      "~/Content/Scripts/bootstrap.js",
                       "~/Content/Scripts/respond.js",
                       "~/Content/Scripts/datatables/jquery.datatables.js",
                       "~/Content/Scripts/datatables/datatables.bootstrap4.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                        "~/Content/Scripts/bootstrap.js",
+                        "~/Content/Scripts/popper.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/tagsinput").Include(
                         "~/Content/Scripts/bootstrap-tagsinput.js"

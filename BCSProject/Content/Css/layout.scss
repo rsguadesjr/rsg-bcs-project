@@ -1,6 +1,9 @@
 ﻿body {
+    .alert{
+        display: none;
+    }
     .form-group {
-        input, select {
+        input:not([type=submit]), select {
             box-sizing: border-box;
             width: 100%;
             max-width: 100%;

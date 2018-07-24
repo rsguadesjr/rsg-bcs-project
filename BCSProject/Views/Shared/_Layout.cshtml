@@ -8,7 +8,8 @@
     @Scripts.Render("~/bundles/lib")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/tagsinput")
-
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Content/Scripts/jquery.ui.datepicker.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
@@ -18,16 +19,15 @@
             <div class="navbar-collapse collapse" id="navbarSupportedContent">
 
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Employees", "Index", "Employees", null, new { @class = "nav-link" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
 
-    <div class="container body-content">
+    <div class="container body-content pt-3">
         @RenderBody()
         <hr />
         <footer>

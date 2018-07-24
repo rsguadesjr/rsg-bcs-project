@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BCSProject.Data
 {
-    public class Class1
+    public class Token
     {
+        public string AccessToken { get; set; }
+        public DateTime Expiration { get; set; }
     }
 }
