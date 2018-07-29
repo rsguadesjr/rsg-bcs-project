@@ -3,8 +3,13 @@
     //initialization
     loadCountries();
 
-    $("#btn-submit").on("click", function () {
-        submitForm();
+    $("form").on("submit", function (e) {
+        console.log("submit");
+        if ($(this).valid()) {
+            console.log("valid");
+            login();
+        }
+        return false;
     });
 
     $("#country").change(function () {
@@ -61,8 +66,18 @@ function submitForm() {
         type: "POST",
         data: JSON.stringify(employee),
         contentType: "application/json",
-        complete: function (e) {
+        success: function (e) {
+            console.log("success");
             console.log(e);
+            window.location.href = "/employees";
+        },
+        complete: function (e) {
+            console.log("complete");
+            console.log(e);
+        },
+        error: function (xhr) {
+            console.log("error:");
+            console.log(xhr);
         }
     });
 }

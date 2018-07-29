@@ -1,9 +1,10 @@
 ﻿body {
-    .alert{
+    .alert {
         display: none;
     }
+
     .form-group {
-        input:not([type=submit]), select {
+        input:not([type=submit]):not([type="checkbox"]):not([type="radio"]), select {
             box-sizing: border-box;
             width: 100%;
             max-width: 100%;
@@ -13,7 +14,7 @@
             width: 100%;
         }
 
-        .bootstrap-tagsinput .tag{
+        .bootstrap-tagsinput .tag {
             font-size: 14px;
         }
     }

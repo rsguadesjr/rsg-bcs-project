@@ -24,9 +24,9 @@ namespace BCSProject.Helpers
             return _context.User.Identity.IsAuthenticated;
         }
 
-        public string Token()
+        public string AccessToken()
         {
-            return _context.GetOwinContext().Authentication.User.Claims.First(x => x.Type == "Token").Value;
+            return _context.GetOwinContext().Authentication.User.Claims.First(x => x.Type == CustomClaimsType.AccessToken).Value;
         }
 
         public void SignIn(LoginViewModel model)
@@ -34,9 +34,10 @@ namespace BCSProject.Helpers
             var identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
             identity.AddClaims(new List<Claim>
                 {
+                    new Claim(ClaimTypes.Role, model.User.Role.RoleName),
                     new Claim(ClaimTypes.NameIdentifier, model.Email),
                     new Claim(ClaimTypes.Name, model.Email),
-                    new Claim(CustomClaimsType.Token, model.Token.AccessToken),
+                    new Claim(CustomClaimsType.AccessToken, model.Token.AccessToken),
                     new Claim(CustomClaimsType.TokenTimeout, model.Token.Expiration.ToString(), ClaimValueTypes.DateTime)
                 });
 

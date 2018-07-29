@@ -1,91 +1,125 @@
-﻿@using System.Configuration
-@Html.Hidden("WebApiLink", ConfigurationManager.AppSettings["WebApiLink"].ToString(), new { @id = "WebApiLink" })
-@Html.Hidden("EmployeeId", (int)ViewBag.EmployeeId)
-<h3 class="mt-4">Employee Details </h3>
+﻿@using BCSProject.Helpers
+@model BCSProject.Models.EmployeeViewModel
+<h3 class="mt-4">Employee Details</h3>
 <hr />
-
+<h4>@ViewBag.ConvertedBirthday</h4>
 <div class="container">
-    <form>
-        <div class="form-row">
-            <div class="form-group col-4">
-                <label for="employeeNo">Employee No.</label>
-                <input type="text" class="form-control" id="employeeNo" placeholder="Employee No" disabled>
-            </div>
-            <div class="clearfix"></div>
-            <div class="form-group col-4">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" required>
-            </div>
-            <div class="form-group col-4">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required>
-            </div>
-            <div class="clearfix"></div>
+    @using (Html.BeginForm())
+    {
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-row">
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.EmployeeNo, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.EmployeeNo, htmlAttributes: new { @class = "form-control", @readonly = true })
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.Firstname, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.Firstname, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Firstname, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.Lastname, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.Lastname, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Firstname, "", new { @class = "text-danger" })
+        </div>
+        <div class="clearfix"></div>
 
-            <div class="form-group col-2">
-                <div>
-                    <label for="birthday">Birthday</label>
-                    <input type="date" class="form-control" id="birthday" placeholder="Enter Birthday">
-                </div>
-            </div>
-            <div class="form-group col-2">
-                <label for="age">Age</label>
-                <input type="text" class="form-control" id="age" placeholder="Enter Age">
-            </div>
-            <div class="form-group col-4">
-                <label for="phone">Phone #</label>
-                <input type="text" class="form-control" id="phone" placeholder="Phone">
-            </div>
-            <div class="clearfix"></div>
-
-            <div class="form-group col-4">
-                <label for="gender">Gender</label>
-                <select class="form-control" id="gender">
-                    <option value=""></option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-10 col-4">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Enter Address">
-            </div>
-            <div class="clearfix"></div>
-
-            <div class="form-group col-4">
-                <label for="country">Country</label>
-                <select class="form-control" id="country">
-                    <option>Loading...</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-10 col-4">
-                <label for="state">State</label>
-                <input type="text" class="form-control" id="state" placeholder="Enter State">
-            </div>
-            <div class="clearfix"></div>
-
-            <div class="form-group col-4">
-                <label for="hobby">Hobby</label>
-                <input type="text" class="form-control" id="hobby" placeholder="Hobby" data-role="tagsinput">
-            </div>
-            <div class="form-group col-xs-10 col-4">
-                <label for="interest">Interest</label>
-                <input type="text" class="form-control" id="interest" placeholder="Interest" data-role="tagsinput">
-            </div>
-            <div class="clearfix"></div>
-
-            <div class="form-group col-2">
-                <label for="dateHired">Date Hired</label>
-                <input type="date" class="form-control" id="dateHired" placeholder="Date Hired">
-            </div>
-            <div class="form-group col-xs-10 col-2">
-                <label for="dateResigned">Resigned</label>
-                <input type="text" class="form-control" id="dateResigned" placeholder="Date Resigned">
+        <div class="form-group col-2">
+            <div>
+                @Html.LabelFor(m => m.Birthday, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.Birthday, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Birthday, "", new { @class = "text-danger" })
+                @Html.Hidden("BirthdayText", Model.Birthday.ToString("yyyy-MM-dd"))
             </div>
         </div>
-        <hr />
-        <button type="button" id="btn-submit" class="btn btn-primary">Submit</button>
-    </form>
+        <div class="form-group col-2">
+            @Html.LabelFor(m => m.Age, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.Age, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.PhoneNo, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.PhoneNo, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.Gender, new { @class = "control-label" })
+            @Html.DropDownListFor(x => x.Gender, WebHelper.Gender(), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.CivilStatus, new { @class = "control-label" })
+            @Html.DropDownListFor(x => x.CivilStatus, WebHelper.CivilStatus(), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CivilStatus, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-xs-10 col-4">
+            @Html.LabelFor(m => m.Address, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.Address, htmlAttributes: new { @class = "form-control" })
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.Country, new { @class = "control-label" })
+            @Html.DropDownListFor(x => x.Country, WebHelper.Countries(), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-xs-10 col-4">
+            @Html.LabelFor(m => m.State, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.State, htmlAttributes: new { @class = "form-control" })
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(m => m.Hobby, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.Hobby, htmlAttributes: new { @class = "form-control", @data_role = "tagsinput" })
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="form-group col-2">
+            @Html.LabelFor(m => m.DateHired, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.DateHired, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DateHired, "", new { @class = "text-danger" })
+            @Html.Hidden("DateHiredText", Model.DateHired.ToString("yyyy-MM-dd"))
+        </div>
+        <div class="form-group col-xs-10 col-2">
+            @Html.LabelFor(m => m.DateResigned, new { @class = "control-label" })
+            @Html.TextBoxFor(x => x.DateResigned, htmlAttributes: new { @class = "form-control" })
+            @Html.Hidden("DateResignedText", Model.DateResigned != null ? Model.DateResigned.Value.ToString("yyyy-MM-dd") : null)
+        </div>
+    </div>
+    <hr />
+    <input type="submit" id="btn-submit" value="Submit" class="btn btn-primary" />
+    }
 </div>
 
-@Scripts.Render("~/scripts/employee/edit")
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script>
+        $(document).ready(function () {
+            $("#DateHired").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+            $("#DateResigned").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+            $("#Birthday").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+
+
+            $("#DateHired").val($("#DateHiredText").val());
+            $("#DateResigned").val($("#DateResignedText").val());
+            $("#Birthday").val($("#BirthdayText").val());
+        });
+    </script>
+}

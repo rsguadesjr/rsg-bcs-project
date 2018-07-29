@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCSProject.Web", "BCSProject\BCSProject.Web.csproj", "{7585B184-53BA-4F5C-85C4-304BC50A2FD3}"
 EndProject
@@ -41,5 +41,8 @@ Global
 		{7585B184-53BA-4F5C-85C4-304BC50A2FD3} = {4BDE8681-16BC-4445-A564-8E48EA2794C3}
 		{98F3B1DE-E05A-4996-B886-82776CEFA6EA} = {E53E2862-50B7-406E-9227-03FBABE303E1}
 		{2FD31D6C-790F-44F9-A441-8F999E9370A9} = {CA507141-9ED6-406D-A372-6D04F99122D9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09D55C53-E80B-4ECF-8410-4D3B32E1DE7A}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using BCSProject.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -19,6 +21,7 @@ namespace BCSProject
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimsIdentity.DefaultNameClaimType;
+            Mapper.Initialize(x => x.AddProfile<MappingProfile>());
         }
     }
 }

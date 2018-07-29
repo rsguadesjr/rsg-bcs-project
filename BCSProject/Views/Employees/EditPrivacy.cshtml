@@ -1,36 +1,34 @@
-﻿@using System.Configuration
-@Html.Hidden("WebApiLink", ConfigurationManager.AppSettings["WebApiLink"].ToString(), new { @id = "WebApiLink" })
-
+﻿@using BCSProject.Helpers
+@model List<BCSProject.Models.PrivacyEmployeeViewModel>
 
 <h3>Employee Details</h3>
 <hr />
 
 <div class="container">
-    <div class="row">
-        <form role="form" id="employee-form">
-            <div class="form-group col-sm-4 col-md-4 col-lg-4">
-                <label for="employeeNo">Employee No.</label>
-                <input type="text" class="form-control" id="employeeNo" placeholder="Employee No" disabled>
-            </div>
-            <div class="clearfix"></div>
-            <div class="form-group col-sm-4 col-md-4 col-lg-4">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" disabled>
-            </div>
-            <div class="form-group col-sm-4 col-md-4 col-lg-4">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" disabled>
-            </div>
-            <div class="clearfix"></div>
-            <hr />
-            <div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
-                @*<button type="submit" class="btn btn-primary">Submit</button>*@
-                <button type="button" id="btn-submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-        <div class="clearfix"></div>
-        <br /><br />
-    </div>
-</div>
+    @using (Html.BeginForm())
+    {
+        for (int count = 0; count < Model.Count(); count++)
+        {
+            @Html.HiddenFor(x => x[count].Id)
+            @Html.HiddenFor(x => x[count].CharacteristicId)
+            @Html.HiddenFor(x => x[count].EmployeeId)
+            @Html.HiddenFor(x => x[count].Characteristic.ColumnName)
+            @Html.HiddenFor(x => x[count].Characteristic.ColumnText)
+            @Html.HiddenFor(x => x[count].Characteristic.Id)
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label class="control-label">Property</label>
+                    @Html.TextBoxFor(x => x[count].Characteristic.ColumnText, htmlAttributes: new { @class = "form-control", @readonly = true })
+                </div>
 
-@Scripts.Render("~/scripts/employee/edit")
+                <div class="form-group col-2">
+                    <label class="control-label">Public or Private</label>
+                    @Html.DropDownListFor(x => x[count].IsPublic, WebHelper.PrivatePublicOptions(Model[count].IsPublic), new { @class = "form-control" })
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        }
+        <input type="submit" id="btn-submit" value="Submit" class="btn btn-primary" />
+
+    }
+</div>

@@ -7,7 +7,7 @@ namespace BCSProject.Helpers
 {
     public class CustomClaimsType
     {
-        public const string Token = "Token";
+        public const string AccessToken = "AccessToken";
         public const string TokenTimeout = "TokenTimeout";
     }
 }

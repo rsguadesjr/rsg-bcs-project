@@ -3,6 +3,7 @@ using BCSProject.Manager;
 using BCSProject.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -14,9 +15,10 @@ namespace BCSProject.Controllers
     {
         AuthenticationService authService;
         UserManager userManager;
-
+        Logger logger;
         public AccountController()
         {
+            logger = new Logger();
             authService = new AuthenticationService(System.Web.HttpContext.Current);
             userManager = new UserManager();
         }
@@ -29,7 +31,11 @@ namespace BCSProject.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        private static void SignalR_Received(string obj)
+        {
+            //throw new NotImplementedException();
+            
+        }
         //
         // POST: /Account/Login
         [HttpPost]
@@ -37,17 +43,24 @@ namespace BCSProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
-            var token = userManager.GetAccessToken(model.Email, model.Password);
-            if (token != null)
-            {
-                model.Token = token;
-                authService.SignIn(model);
-                return RedirectToLocal(returnUrl);
-            }
-            else
-            {
-                ModelState.AddModelError("", "Invalid login attempt.");
-            }
+
+            logger.LogMessage(DateTime.Now , "Test", "Inside me", "dseceiont", "Normal");
+            //var user = userManager.Login(model.Email, model.Password);
+            //if (user != null)
+            //{
+            //    var token = userManager.GetAccessToken(model.Email, model.Password);
+            //    if (token != null)
+            //    {
+            //        model.Token = token;
+            //        model.User = user;
+            //        authService.SignIn(model);
+            //        return RedirectToLocal(returnUrl);
+            //    }
+            //    else
+            //    {
+            //        ModelState.AddModelError("", "Invalid login attempt.");
+            //    }
+            //}
             return View(model);
         }
 

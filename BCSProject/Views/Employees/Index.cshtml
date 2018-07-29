@@ -1,8 +1,9 @@
-﻿@using System.Configuration
+﻿@using BCSProject.Helpers
 
 <h3 class="mt-4">List of Employees</h3>
-@Html.Hidden("WebApiLink", ConfigurationManager.AppSettings["WebApiLink"].ToString(), new { @id = "WebApiLink" })
-<table id="employeeTable" class="table">
+@Html.Hidden("WebApiLink", WebHelper.WebApiLink)
+@Html.Hidden("AccessToken", (string)ViewBag.AccessToken)
+<table id="employeeTable" class="table table-sm">
     <thead>
         <tr>
             <th>
@@ -17,15 +18,16 @@
         </tr>
     </thead>
     <tbody></tbody>
-
 </table>
+@Html.ActionLink("Create New", "Create", "Employees", null, new { @class = "btn btn-link"})
 @section scripts
 {
     <script>
         $(document).ready(function () {
             var table = $("#employeeTable").DataTable({
                 ajax: {
-                    url: "http://localhost:49911/api/employees",
+                    url: $("#WebApiLink").val() + "api/employees",
+                    contentType: "application/json",
                     dataSrc: ""
                 },
                 columns: [

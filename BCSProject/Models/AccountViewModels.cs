@@ -1,4 +1,4 @@
-﻿using BCSProject.Data;
+﻿using BCSProject.Data.Model;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -64,6 +64,8 @@ namespace BCSProject.Models
 
 
         public Token Token { get; set; }
+
+        public User User { get; set; }
     }
 
     public class RegisterViewModel
